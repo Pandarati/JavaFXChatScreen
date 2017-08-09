@@ -84,12 +84,12 @@ public class ChatScreen {
     );
 
     //CommandButton(Let's the user click the commands they want instead of always typing them)
-    Button commandsButton = new Button(" ? ");
-    commandsButton.getStyleClass().add("button-blue");
-    messageInputBottom.getChildren().add(commandsButton);
+    Button helpButton = new Button(" ? ");
+    helpButton.getStyleClass().add("button-blue");
+    messageInputBottom.getChildren().add(helpButton);
 
     //Commands Button On-click
-    commandsButton.setOnAction(e -> MessagingMode.display());
+    helpButton.setOnAction(e -> ConvoMode.display());
 
     //MASTER LAYOUT: Combines little pieces of layout together
     BorderPane masterLayout = new BorderPane();
@@ -112,7 +112,7 @@ public class ChatScreen {
 
     if(message.equals(""))
       return;
-    
+
     mainChatMiddle.getChildren().add(new Label("Jonathan: "  + message));
     userInput.setText("");
 

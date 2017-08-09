@@ -18,6 +18,11 @@ public class MessagingMode {
   private static Button addMember = new Button("Add a member to the conversation");
   private static Button addOwner = new Button("Add a owner to the conversation");
 
+  //General Commands:
+  private static Label generalCommands = new Label("General Commands: ");
+  private static Button goBackAScene = new Button("Go Back a Scene");
+  private static Button exitProgram = new Button("Exit Program");
+
 
   public static void display(){
     Stage window = new Stage();
@@ -29,8 +34,9 @@ public class MessagingMode {
 
     VBox commandWindow = new VBox();
     accessCtrlCommands.setFont(new Font("Arial", 15));
+    generalCommands.setFont(new Font("Arial", 15));
     commandWindow.setPadding(new Insets(10,10, 10, 10));
-    commandWindow.getChildren().addAll(accessCtrlCommands, addMember, addOwner);
+    commandWindow.getChildren().addAll(accessCtrlCommands, addMember, addOwner, generalCommands, goBackAScene, exitProgram);
     
     Scene scene = new Scene(commandWindow, 300, 250);
     window.setScene(scene);

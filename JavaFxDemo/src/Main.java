@@ -100,12 +100,6 @@ public class Main extends Application {
     scene.getStylesheets().add("Viper.css");
     window.setScene(scene);
     window.show();
-    window.close();
-
-    //Set scene straight into Chat view
-    AlertBox.display("Confirm Box", "You sure want to go to the Chat Program?");
-    ChatScreen.display("Chat Screen");
-
 
   }
 
@@ -159,11 +153,10 @@ public class Main extends Application {
    *
    * @return boolean
    */
-  private boolean signIn(String username, String password){
+  private void signIn(String username, String password){
 
     if(username.length() == 0 || password.length() == 0){
       System.out.println("Text is missing out of the username or password field!");
-      return  false;
     }
 
     if(userLogins.get(username) != null) {
@@ -171,6 +164,9 @@ public class Main extends Application {
       if(userLogins.get(username).equals(password)){
         User user = userLogins.get(username);
         System.out.println("Welcome, " + user.getName() + "!");
+
+        //Change to the ConvoMode Scene
+        ConvoMode.display();
       }
       else {
         System.out.println("Wrong Password");
@@ -179,11 +175,6 @@ public class Main extends Application {
       }
 
     }
-    else {
-      return false;
-    }
 
-    return true;
   }
-
 }
