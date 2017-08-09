@@ -13,6 +13,15 @@ public class ConfirmBox {
 
   static boolean answer;
 
+  /**
+   * NOTES:
+   * SET RESIAZBEL TO STATIC
+   * PUT BUTTONS IN HERE THAT DO THE COMMANDS!
+   *
+   * @param title
+   * @param message
+   * @return
+   */
   public static boolean display(String title, String message){
     Stage window = new Stage();
     window.initModality(Modality.APPLICATION_MODAL);

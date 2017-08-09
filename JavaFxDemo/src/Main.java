@@ -64,13 +64,9 @@ public class Main extends Application {
     passInput.setPromptText("password");
     GridPane.setConstraints(passInput, 1, 1);
 
-
     //Login
     Button loginButton = new Button("Log In");
     GridPane.setConstraints(loginButton, 1,2);
-
-
-
 
     Button signUpButton = new Button("Sign Up");
     signUpButton.getStyleClass().add("button-blue");
@@ -103,14 +99,15 @@ public class Main extends Application {
     Scene scene = new Scene(grid, 400, 300);
     scene.getStylesheets().add("Viper.css");
     window.setScene(scene);
+    window.show();
+    window.close();
 
     //Set scene straight into Chat view
     AlertBox.display("Confirm Box", "You sure want to go to the Chat Program?");
+    ChatScreen.display("Chat Screen");
 
 
-    window.show();
   }
-
 
   /**
    * Procedure for closing the program
@@ -185,7 +182,6 @@ public class Main extends Application {
     else {
       return false;
     }
-
 
     return true;
   }
