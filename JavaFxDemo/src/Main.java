@@ -145,6 +145,7 @@ public class Main extends Application {
     nameInput.setText("");
     passInput.setText("");
 
+    AlertBox.display("Sign Up", "You have successfully registered! Try to sign-in! Welcome " + username + "!");
 
     return true;
   }
@@ -161,12 +162,14 @@ public class Main extends Application {
 
     if(userLogins.get(username) != null) {
 
-      if(userLogins.get(username).equals(password)){
+      if(userLogins.get(username).getPassword().equals(password)){
         User user = userLogins.get(username);
         System.out.println("Welcome, " + user.getName() + "!");
 
         //Change to the ConvoMode Scene
-        ConvoMode.display();
+        window.close();
+        ChatScreen.display();
+
       }
       else {
         System.out.println("Wrong Password");

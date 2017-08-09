@@ -19,9 +19,10 @@ public class ChatScreen {
   private static VBox mainChatMiddle;
   private static ScrollPane scrollPane;
 
-  public static void display(String title){
+  public static void display(){
     window = new Stage();
-    createScreen(title);
+    window.setTitle("Chat Screen");
+    createScreen();
 
 
     //Chat Typing TextField
@@ -29,35 +30,18 @@ public class ChatScreen {
   }
 
   //Generates the ChatScreen for the user
-  private static void createScreen(String title){
-
-    window.setTitle("Chat Screen");
-    window.setTitle(title);
+  private static void createScreen(){
     window.setMinWidth(250);
 
     //MainChat Screen Layout
     mainChatMiddle = new VBox();
     mainChatMiddle.setStyle("-fx-font-color: blue");
 
-    Label msg1 = new Label("Jonathan: Hi there!");
-    Label msg2 = new Label("Jonathan: Hi there!");
-    Label msg3 = new Label("Jonathan: Hi there!");
-    Label msg4 = new Label("Jonathan: Hi there!");
-    Label msg5 = new Label("Jonathan: Hi there!");
-    Label msg6 = new Label("Jonathan: Hi there!");
-    Label msg7 = new Label("Jonathan: Hi there!");
-    Label msg8 = new Label("Jonathan: Hi there!");
-    Label msg9 = new Label("Jonathan: Hi there!");
-    Label msg10 = new Label("Jonathan: Hi there!");
-    Label msg11 = new Label("Jonathan: Hi there!");
-    Label msg12 = new Label("Jonathan: Hi there!");
-    Label msg13 = new Label("Jonathan: Hi there!");
-    Label msg14 = new Label("Jonathan: Hi there!");
-    Label msg15 = new Label("Jonathan: Hi there!");
-    Label msg16 = new Label("Jonathan: Hi GOO!");
+    Label msg1 = new Label("Welcome to the beta version of the Codatouille App!");
+    Label msg2 = new Label("Click the \"?\" for more options! ");
 
 
-    mainChatMiddle.getChildren().addAll(msg1, msg2, msg3,msg4, msg5, msg6,msg7 ,msg8 ,msg9 ,msg10,msg11 ,msg12 ,msg13 ,msg14 ,msg15, msg16);
+    mainChatMiddle.getChildren().addAll(msg1, msg2);
 
     scrollPane = new ScrollPane();
     scrollPane.setContent(mainChatMiddle);
