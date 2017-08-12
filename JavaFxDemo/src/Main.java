@@ -1,21 +1,11 @@
-import com.sun.org.apache.xpath.internal.operations.Number;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Observable;
+
 
 /**
  * Created by Jonathan on 8/1/2017.

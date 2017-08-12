@@ -15,5 +15,10 @@
   -fx-text-fill: #FFFFFF;
   -fx-background-radius: 4;
 }
-.
+.mainchat{
+    -fx-font-size: 10pt;
+}
+.aiden-text{
+    -fx-text-fill: green;
+}
 

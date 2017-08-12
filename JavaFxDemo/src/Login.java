@@ -59,7 +59,7 @@ public class Login extends Application {
     Scene scene = new Scene(grid, 300, 200);
     window.setScene(scene);
 
-    window.show();
+    //window.show();
   }
 
 

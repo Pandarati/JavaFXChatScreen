@@ -1,13 +1,15 @@
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sun.plugin2.message.Message;
 
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Jonathan on 8/6/2017.
@@ -18,16 +20,27 @@ public class ChatScreen {
   private static TextField userInput;
   private static VBox mainChatMiddle;
   private static ScrollPane scrollPane;
+  private static AidenAI ai;
+  private static boolean aidenResponseMode;
 
   public static void display(){
     window = new Stage();
     window.setTitle("Chat Screen");
     createScreen();
 
+    //Code for the AIDEN AI
+    startAiden(mainChatMiddle);
 
-    //Chat Typing TextField
 
   }
+
+  private static void startAiden(VBox mainChatMiddle){
+    ai = new AidenAI(mainChatMiddle);
+    aidenResponseMode = true;
+    ai.welcomeMessage();
+  }
+
+
 
   //Generates the ChatScreen for the user
   private static void createScreen(){
@@ -36,12 +49,7 @@ public class ChatScreen {
     //MainChat Screen Layout
     mainChatMiddle = new VBox();
     mainChatMiddle.setStyle("-fx-font-color: blue");
-
-    Label msg1 = new Label("Welcome to the beta version of the Codatouille App!");
-    Label msg2 = new Label("Click the \"?\" for more options! ");
-
-
-    mainChatMiddle.getChildren().addAll(msg1, msg2);
+    mainChatMiddle.getStyleClass().add("mainchat");
 
     scrollPane = new ScrollPane();
     scrollPane.setContent(mainChatMiddle);
@@ -90,6 +98,7 @@ public class ChatScreen {
 
   /**
    * Submits the user message that is typed in the UserInput field
+   * (every time we add to mainChatMiddle[VBox] we call this method)
    */
   private static void submitMessage() {
     String message = userInput.getText().toString();
@@ -97,11 +106,28 @@ public class ChatScreen {
     if(message.equals(""))
       return;
 
-    mainChatMiddle.getChildren().add(new Label("Jonathan: "  + message));
-    userInput.setText("");
+    EmojiChecker emojiChecker = new EmojiChecker(message);
+    HBox formatMessage = emojiChecker.handleEmojiKeyCodes();
 
+    if(formatMessage == null) {
+      mainChatMiddle.getChildren().addAll(new Label("Jonathan: " + message));
+    }
+    else {
+      mainChatMiddle.getChildren().addAll(formatMessage);
+    }
+    userInput.setText("");
     //Find a way to get ScrollPane to shift down all the way
     scrollPane.setVvalue(1);
+
+    //Let Aiden view messages before submission
+    if(aidenResponseMode) {
+      ai.checkMessage(message);
+      //Scoll needs to be reset after Aiden SPEAKS
+      scrollPane.setVvalue(1);
+    }
+
+
+
   }
 
 }
